@@ -130,8 +130,52 @@
             <button>Create</button>
         </div>
         <div class="note-container">
+
         </div>
     </section>
+    <script>
+
+        document.querySelector( ".new-note-container>button" ).addEventListener( "click", () => {
+            let div = document.createElement( "div" );
+            div.classList.add( "note" );
+
+            let input = document.querySelector( ".new-note-container > input" );
+
+            let note = `
+                    <div class="note-header">
+                        <h2>${input.value}</h2>
+                        <span>0</span>
+                    </div>
+                    <div class="item-container">
+                    </div>
+                    <form class="action-container">
+                        <input type="text" placeholder="Input Here . . . ">
+                        <button id="new-item-button">Buat</button>
+                    </form>
+            `;
+
+            div.innerHTML = note;
+            let noteContainer = document.querySelector( ".note-container" );
+            noteContainer.appendChild( div );
+        } );
+
+
+        document.querySelector( ".action-container > button" ).addEventListener( "click", ( event ) => {
+            event.preventDefault();
+            let div = document.createElement( "div" );
+            div.classList.add( "item" );
+
+            let input = document.querySelector( ".action-container > input" );
+            let p = document.createElement( "p" );
+            p.innerText = input.value;
+
+            div.appendChild( p );
+
+            document.querySelector( ".item-container" ).appendChild( div );
+            input.value = "";
+        } );
+
+    </script>
 </body>
 
 </html>
